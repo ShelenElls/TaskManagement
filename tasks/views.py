@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView
 from tasks.models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.views.generic.list import ListView
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
@@ -12,3 +13,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self) -> str:
         return reverse_lazy("show_project", args=[self.object.id])
+
+
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = "tasks/list.html"
+
+    def get_queryset(self):
+        return Task.objects.filter(assignee=self.request.user)
