@@ -29,7 +29,7 @@
                     {% for project in project_list %}
                     <tr>
                         <td><a href="{% url 'show_project' project.pk %}">{{ project.name }}</a></td>
-                        <td>{{ x.tasks|length }}</td>
+                        <td>{{ project.tasks.all|length }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
