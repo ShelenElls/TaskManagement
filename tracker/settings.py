@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "tracker.urls"
+LOGIN_REDIRECT_URL = "home"
 
 TEMPLATES = [
     {
