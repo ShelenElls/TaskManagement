@@ -26,10 +26,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for x in project_list %}
+                    {% for project in project_list %}
                     <tr>
-                        <td>{{ x.name }}</td>
-                        <td>{{ x.tasks }}</td>
+                        <td><a href="{% url 'show_project' project.pk %}">{{ project.name }}</a></td>
+                        <td>{{ x.tasks|length }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
