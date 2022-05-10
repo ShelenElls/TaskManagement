@@ -1,4 +1,4 @@
-# from django.shortcuts import redirect
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from projects.models import Project
 
@@ -12,6 +12,7 @@ from projects.models import Project
 class ProjectListView(ListView):
     model = Project
     template_name = "projects/list.html"
+
 
     # def get_queryset(self):
     #     return Project.objects.filter(members=self.request.user)
