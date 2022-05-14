@@ -1,5 +1,3 @@
-from dataclasses import field
-from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView
 from tasks.models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,7 +11,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     fields = ["name", "start_date", "due_date", "project", "assignee"]
 
     def get_success_url(self) -> str:
-        return reverse_lazy("show_project", args=[self.object.id])
+        return reverse_lazy("show_project", args=[self.object.project.id])
 
 
 class TaskListView(LoginRequiredMixin, ListView):
